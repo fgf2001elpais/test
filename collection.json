@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "3bc881e1-bc5d-4eb2-9b0b-f6e94ee9409c",
+		"name": "Star Wars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "StarShips",
+			"description": null,
+			"item": [
+				{
+					"name": "Millennium Falcon Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "acd2e230-85f9-420d-95d4-87289df2f708",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"",
+									"var results = pm.response.json().results;",
+									"//Salva en la veriable de entorno la url del Halcon Milenario",
+									"pm.environment.set(\"falcon\", ",
+									"results.",
+									"find(",
+									"x => x.name == 'Millennium Falcon'    ",
+									").url);",
+									"",
+									"",
+									"pm.test(\"More than 100 starships\", function () {",
+									"",
+									"pm.expect(results).to.have.lengthOf(100);    ",
+									"    ",
+									"});",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{host}}starships",
+							"host": [
+								"{{host}}starships"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
